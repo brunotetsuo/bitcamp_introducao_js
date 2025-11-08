@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contador com JavaScript</title>
+  </head>
+
+  <body>
+    <p id="contador">0</p>
+    <button onclick="aumentar()">+1</button>
+    <button onclick="diminuir()">-1</button>
+
+    <script>
+      let valor = 0;
+
+      function aumentar() {
+        valor++;
+        document.getElementById("contador").innerText = valor;
+      }
+
+      function diminuir() {
+        valor--;
+        document.getElementById("contador").innerText = valor;
+      }
+    </script>
+  </body>
+</html>

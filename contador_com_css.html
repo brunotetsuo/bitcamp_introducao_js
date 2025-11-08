@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contador com JavaScript</title>
+
+    <style>
+      /* Estilização geral da página */
+      body {
+        display: flex; /* Usa o flexbox para alinhar os elementos */
+        flex-direction: column; /* Organiza os elementos em coluna (um embaixo do outro) */
+        justify-content: center; /* Centraliza verticalmente na tela */
+        align-items: center; /* Centraliza horizontalmente na tela */
+        height: 100vh; /* Faz o body ocupar toda a altura da tela */
+        margin: 0; /* Remove as margens padrão do navegador */
+        font-family: Arial, Helvetica, sans-serif; /* Define a fonte usada no texto */
+        font-size: 20px; /* Define o tamanho base da fonte */
+      }
+
+      /* Estilo do número do contador */
+      #contador {
+        font-size: 48px; /* Deixa o número maior e mais visível */
+        font-weight: bold; /* Deixa o número em negrito */
+        margin-bottom: 20px; /* Dá um espaço entre o número e os botões */
+      }
+
+      /* Estilo dos botões */
+      button {
+        font-size: 18px; /* Define o tamanho do texto dos botões */
+        padding: 10px 20px; /* Aumenta a área clicável dos botões */
+        margin: 5px; /* Espaço entre os botões */
+        cursor: pointer; /* Mostra o ícone de mão ao passar o mouse */
+      }
+    </style>
+  </head>
+
+  <body>
+    <p id="contador">0</p>
+    <button onclick="aumentar()">+1</button>
+    <button onclick="diminuir()">-1</button>
+
+    <script>
+      let valor = 0; // Armazena o valor atual do contador
+
+      function aumentar() {
+        valor++; // Incrementa o valor
+        document.getElementById("contador").innerText = valor; // Atualiza o texto na tela
+      }
+
+      function diminuir() {
+        valor--; // Decrementa o valor
+        document.getElementById("contador").innerText = valor; // Atualiza o texto na tela
+      }
+    </script>
+  </body>
+</html>
