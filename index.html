@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aula de JavaScript - Introdução</title>
+    <style>
+      :root {
+        /* 🎨 Tema Claro */
+        --bg: #f8fafc;
+        --text: #0f172a;
+        --accent: #0284c7;
+        --card: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .slide {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 90%;
+        max-width: 900px;
+        padding: 2rem;
+        background-color: var(--card);
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        animation: fade 0.5s ease-in-out;
+      }
+
+      .slide.active {
+        display: flex;
+      }
+
+      h1 {
+        color: var(--accent);
+        margin-bottom: 1rem;
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+
+      pre {
+        background: #f1f5f9;
+        color: #1e293b;
+        padding: 1rem;
+        border-radius: 8px;
+        text-align: left;
+        width: 100%;
+        overflow-x: auto;
+        margin-top: 1rem;
+      }
+
+      code {
+        color: #0284c7;
+        background: #e2e8f0;
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+
+      .controls {
+        position: absolute;
+        bottom: 30px;
+        display: flex;
+        gap: 1rem;
+      }
+
+      button {
+        background-color: var(--accent);
+        border: none;
+        color: #ffffff;
+        font-weight: bold;
+        padding: 0.8rem 1.5rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+
+      button:hover {
+        opacity: 0.9;
+        transform: scale(1.05);
+      }
+
+      @keyframes fade {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .exemplo-box {
+        background: #f1f5f9;
+        padding: 1rem;
+        border-radius: 10px;
+        width: 100%;
+        max-width: 400px;
+        margin-top: 1rem;
+      }
+
+      .exemplo-box button {
+        background-color: #0284c7;
+        color: #ffffff;
+        font-weight: bold;
+        border: none;
+        padding: 0.7rem 1rem;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .exemplo-box button:hover {
+        background-color: #38bdf8;
+      }
+
+      /* 🔹 Scroll interno apenas para o slide 2 */
+      .scrollable {
+        max-height: 70vh;
+        overflow-y: auto;
+        padding-right: 1rem;
+      }
+
+      .scrollable::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .scrollable::-webkit-scrollbar-thumb {
+        background: #0284c7;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- SLIDE 0 - INTRODUÇÃO -->
+    <div class="slide active">
+      <h1>Bem-vindo à Aula de JavaScript</h1>
+      <p>
+        👋 Nesta apresentação, vamos aprender os fundamentos do JavaScript de
+        forma prática!
+      </p>
+      <p>Você verá:</p>
+      <ul style="text-align: left; margin-bottom: 1rem">
+        <li>Como inserir JavaScript no HTML</li>
+        <li>Variáveis e tipos de dados</li>
+        <li>Operadores e funções básicas</li>
+        <li>Eventos e exemplos interativos</li>
+      </ul>
+    </div>
+
+    <!-- SLIDE 1 -->
+    <div class="slide">
+      <h1>1. Revisão e Contexto do JavaScript</h1>
+      <p>
+        JavaScript é uma linguagem de programação criada em 1995 para tornar as
+        páginas web interativas.
+      </p>
+      <p>
+        Hoje, é usada tanto no <strong>front-end</strong> (navegadores) quanto
+        no <strong>back-end</strong> (servidores com Node.js).
+      </p>
+      <p>
+        <strong>Importância:</strong> É uma das linguagens mais populares do
+        mundo e essencial para o desenvolvimento web.
+      </p>
+    </div>
+
+    <!-- SLIDE 2 -->
+    <div class="slide">
+      <div class="scrollable">
+        <h1>2. Inserindo JavaScript no HTML</h1>
+        <p>Podemos inserir JavaScript de duas formas principais:</p>
+        <ul style="text-align: left; margin-bottom: 1rem">
+          <li>
+            <strong>Internamente:</strong> o código JavaScript fica dentro da
+            tag <code>&lt;script&gt;</code>.
+          </li>
+          <li>
+            <strong>Externamente:</strong> o código fica em um arquivo separado
+            <code>.js</code>.
+          </li>
+        </ul>
+
+        <p>💡 Exemplo 1 — Código JavaScript interno no HTML:</p>
+        <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Exemplo JS Interno&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Olá Mundo com JavaScript&lt;/h1&gt;
+  <strong>
+    &lt;script&gt;
+      alert("Bem-vindo à aula de JavaScript!");
+      console.log("Mensagem exibida no console");
+    &lt;/script&gt;
+  </strong>
+  &lt;/body&gt;
+&lt;/html&gt;
+        </pre>
+        <p></p>
+        <p>💡 Exemplo 2 — Código JavaScript externo (melhor prática):</p>
+        <pre>
+<!-- index.html -->
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Exemplo JS Externo&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Usando um arquivo JavaScript externo&lt;/h1&gt;
+
+    <strong>&lt;script src="script.js"&gt;&lt;/script&gt;</strong>
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+        <p></p>
+        <p>Exemplo do arquivo script.js:</p>
+        <pre>
+<!-- script.js -->
+alert("Olá! Este alerta veio de um arquivo externo!");
+console.log("Arquivo externo conectado com sucesso!");
+        </pre>
+      </div>
+    </div>
+
+    <!-- SLIDE 3 -->
+    <div class="slide">
+      <h1>3. Variáveis e Tipos de Dados</h1>
+      <p>
+        <strong>Variáveis</strong> são como "caixinhas" onde guardamos
+        informações que o programa usa.
+      </p>
+      <p>
+        Podemos declarar com <code>let</code> (valor pode mudar) ou
+        <code>const</code> (valor fixo).
+      </p>
+      <p>
+        <strong>Tipos de Dados</strong> definem o tipo de informação armazenada
+        na variável.
+      </p>
+      <pre>
+let nome = "Maria";        String → guarda textos
+let idade = 25;                Number → guarda números
+let aprovado = true;       Boolean → verdadeiro ou falso
+let nota;                          Undefined → ainda sem valor
+let endereco = null;        Null → valor intencionalmente vazio
+const PI = 3.14;              Constante → valor fixo
+let pessoa = { nome: "Bruno", idade: 25 };  Objeto → estrutura que agrupa dados em pares "chave: valor"
+      </pre>
+      <p>
+        🔹 Use variáveis para armazenar informações que mudam, como nome, idade
+        ou resultado de cálculos.
+      </p>
+      <p>
+        🔹 Use constantes para valores que não devem mudar, como
+        <code>PI</code> ou <code>URL_BASE</code>.
+      </p>
+    </div>
+
+    <!-- SLIDE 4 -->
+    <div class="slide">
+      <h1>4. Operadores e Expressões</h1>
+      <p>
+        Os operadores permitem realizar cálculos e comparações em JavaScript.
+      </p>
+      <pre>
+// Matemáticos
+let soma = 5 + 2;       // 7
+let divisao = 10 / 2;   // 5
+
+// Comparação
+5 == "5"   // true (compara valor)
+5 === "5"  // false (compara valor e tipo)
+
+// Lógicos
+true && false  // false
+true || false  // true
+!true          // false
+      </pre>
+    </div>
+
+    <!-- SLIDE 5 -->
+    <div class="slide">
+      <h1>5. Funções e Eventos Básicos</h1>
+      <p>
+        <strong>Funções</strong> são blocos de código que executam uma tarefa
+        específica. Podem ser chamadas a qualquer momento.
+      </p>
+      <pre>
+function saudacao() {
+  alert("Olá! Seja bem-vindo!");
+}
+
+saudacao(); // Chama a função
+      </pre>
+      <p></p>
+      <p>
+        <strong>Eventos</strong> são ações do usuário, como cliques, teclas ou
+        movimentar o mouse.
+      </p>
+      <p>💡 Exemplo de evento com botão e função:</p>
+      <pre>
+&lt;button onclick="mostrarMensagem()"&gt;Clique aqui&lt;/button&gt;
+
+&lt;script&gt;
+function mostrarMensagem() {
+  document.getElementById("msg").innerText = "Você clicou no botão!";
+}
+&lt;/script&gt;
+      </pre>
+
+      <div class="exemplo-box">
+        <p id="msg">Clique no botão abaixo 👇</p>
+        <button onclick="mostrarMensagem()">Clique aqui</button>
+      </div>
+
+      <script>
+        function mostrarMensagem() {
+          document.getElementById("msg").innerText = "Você clicou no botão! 🎉";
+        }
+      </script>
+    </div>
+
+    <!-- SLIDE 6 -->
+    <div class="slide">
+      <h1>6. Prática: Botão que muda texto</h1>
+      <p>
+        Vamos criar um botão que muda o texto de um parágrafo quando clicado.
+      </p>
+
+      <p>💡 Exemplo de código HTML completo:</p>
+      <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Botão que muda texto&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p id="mensagem"&gt;Texto original&lt;/p&gt;
+    &lt;button onclick="mudarTexto()"&gt;Mudar Texto&lt;/button&gt;
+
+    &lt;script&gt;
+      function mudarTexto() {
+        document.getElementById("mensagem").innerText = "Texto alterado com JavaScript!";
+      }
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+  </pre
+      >
+
+      <div class="exemplo-box">
+        <p id="mensagem">Texto original</p>
+        <button
+          onclick="document.getElementById('mensagem').innerText='Texto alterado com JavaScript!'"
+        >
+          Mudar Texto
+        </button>
+      </div>
+    </div>
+
+    <!-- SLIDE 7 -->
+    <div class="slide">
+      <h1>7. Revisão e Erros Comuns</h1>
+      <p>⚠️ <strong>Erros comuns:</strong></p>
+      <ul style="text-align: left">
+        <li>
+          Esquecer de fechar chaves <code>{ }</code> ou parênteses
+          <code>()</code>.
+        </li>
+        <li>
+          Escrever o nome errado de uma variável (<code>idade</code> ≠
+          <code>Idade</code>).
+        </li>
+        <li>Usar o código JS antes de o HTML carregar.</li>
+        <li>
+          Não usar <code>console.log()</code> para testar e entender o código.
+        </li>
+      </ul>
+    </div>
+
+    <!-- CONTROLES -->
+    <div class="controls">
+      <button id="prev">Anterior</button>
+      <button id="next">Próximo</button>
+    </div>
+
+    <script>
+      const slides = document.querySelectorAll(".slide");
+      let index = 0;
+
+      function showSlide(i) {
+        slides.forEach((slide) => slide.classList.remove("active"));
+        slides[i].classList.add("active");
+      }
+
+      document.getElementById("next").addEventListener("click", () => {
+        index = (index + 1) % slides.length;
+        showSlide(index);
+      });
+
+      document.getElementById("prev").addEventListener("click", () => {
+        index = (index - 1 + slides.length) % slides.length;
+        showSlide(index);
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") {
+          index = (index + 1) % slides.length;
+          showSlide(index);
+        } else if (e.key === "ArrowLeft") {
+          index = (index - 1 + slides.length) % slides.length;
+          showSlide(index);
+        }
+      });
+    </script>
+  </body>
+</html>
